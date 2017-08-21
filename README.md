@@ -14,7 +14,7 @@ JEasyCrypto is a library and a collection of related applications enabling encry
 ### How do I get set up? ###
 
 * Clone the project from bitbucket
-* Build the lib, then server, console and client. Use console and client for cryption.
+* Build the lib, then server, console and client. Use Console or Client and Server for cryption. Use the provided start.sh files to start the client and server from the bin directories.
 * Dependencies
  * Uses https://code.google.com/archive/p/json-simple/ on Server and Client to create/parse JSON.
 
