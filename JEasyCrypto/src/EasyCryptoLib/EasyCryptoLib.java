@@ -28,25 +28,25 @@ public class EasyCryptoLib {
 		EError,        /*!< There was an error with en/decryption. */
 		ENotSupported  /*!< The method of en/decription is not supported by the library */
 	}
-	
+
 	public static class Result {
 		private ResultCode code = ResultCode.ENotSupported;
 		private String result = null;
-		
+
 		public Result(ResultCode c, String r) {
 			code = c;
 			result = r;
 		}
-		
+
 		public ResultCode resultCode() {
 			return code;
 		}
-		
+
 		public String result() {
 			return result;
 		}
 	}
-	
+
 
 
 	/**
@@ -55,20 +55,23 @@ public class EasyCryptoLib {
     @param toStoreTo A string to store the encrypted text to.
     @param m The method of encryption.
     @returns Returns success code of the encryption. See Result enum for details.
-	*/
+	 */
 	public static Result encrypt(final String toEncrypt, final String method) {
 		try {
-	         if (method.equalsIgnoreCase("reverse")) {
-	            CryptoMethod theImpl = new ReverseMethod();
-	            return theImpl.encrypt(toEncrypt);
-	         } else if (method.equalsIgnoreCase("matrix")) {
-		        CryptoMethod theImpl = new MatrixMethod();
-	            return theImpl.encrypt(toEncrypt);
-	         }
-	      } catch (Exception e) {
-	         return new Result(ResultCode.EError, e.getMessage());
-	      }
-	      return new Result(ResultCode.ENotSupported, "Error: Method not supported!");
+			if (method.equalsIgnoreCase("reverse")) {
+				CryptoMethod theImpl = new ReverseMethod();
+				return theImpl.encrypt(toEncrypt);
+			} else if (method.equalsIgnoreCase("matrix")) {
+				CryptoMethod theImpl = new MatrixMethod();
+				return theImpl.encrypt(toEncrypt);
+			} else if (method.equalsIgnoreCase("cyr")) {
+				CryptoMethod theImpl = new CyrMethod();
+				return theImpl.encrypt(toEncrypt);
+			}
+		} catch (Exception e) {
+			return new Result(ResultCode.EError, e.getMessage());
+		}
+		return new Result(ResultCode.ENotSupported, "Error: Method not supported!");
 	}
 
 	/**
@@ -80,17 +83,21 @@ public class EasyCryptoLib {
 	 */
 	public static Result decrypt(final String toDecrypt, final String method) {
 		try {
-	         if (method.equalsIgnoreCase("reverse")) {
-	            CryptoMethod theImpl = new ReverseMethod();
-	            return theImpl.decrypt(toDecrypt);
-	         } else if (method.equalsIgnoreCase("matrix")) {
-		        CryptoMethod theImpl = new MatrixMethod();
-	            return theImpl.decrypt(toDecrypt);
-	         }
-	      } catch (Exception e) {
-	         return new Result(ResultCode.EError, e.getMessage());
-	      }
-	      
+			if (method.equalsIgnoreCase("reverse")) {
+				CryptoMethod theImpl = new ReverseMethod();
+				return theImpl.decrypt(toDecrypt);
+			} else if (method.equalsIgnoreCase("matrix")) {
+				CryptoMethod theImpl = new MatrixMethod();
+				return theImpl.decrypt(toDecrypt);
+			} else if (method.equalsIgnoreCase("cyr")) {
+				CryptoMethod theImpl = new CyrMethod();
+				return theImpl.decrypt(toDecrypt);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new Result(ResultCode.EError, e.getMessage());
+		}
+
 		return new Result(ResultCode.ENotSupported, "Error: Method not supported!");
 	}
 
@@ -113,6 +120,8 @@ public class EasyCryptoLib {
 			methods += ",";
 			method = new MatrixMethod();
 			methods += method.method();
+			method = new CyrMethod();
+			methods += "," + method.method();
 		} catch (Exception e) {
 			// ....
 		} finally {
