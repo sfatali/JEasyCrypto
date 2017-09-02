@@ -6,7 +6,10 @@ import java.util.Locale;
 import EasyCryptoLib.EasyCryptoLib.Result;
 import EasyCryptoLib.EasyCryptoLib.ResultCode;
 
-public class CyrMethod implements CryptoMethod {
+class CyrMethod implements CryptoMethod {
+	
+	private static final int CLEAR_TEXT_UNICODE_START_VALUE = 0x20;
+	private static final int CRYPTED_TEXT_UNICODE_START_VALUE = 0x0400;
 	
 	@Override
 	public Result encrypt(String toEncrypt) {
@@ -20,7 +23,7 @@ public class CyrMethod implements CryptoMethod {
         for (int end = breakIterator.next(); end != BreakIterator.DONE; start = end, end = breakIterator.next()) {
         		tmp = toEncrypt.substring(start, end);
         		int valueOfChar = tmp.codePointAt(0); 
-        		int newValue = 0x0400 + (valueOfChar-0x20);
+        		int newValue = CRYPTED_TEXT_UNICODE_START_VALUE + (valueOfChar-CLEAR_TEXT_UNICODE_START_VALUE);
         		result += String.copyValueOf(Character.toChars(newValue));
         }
 		return new Result(ResultCode.ESuccess, result);
@@ -38,7 +41,7 @@ public class CyrMethod implements CryptoMethod {
         for (int end = breakIterator.next(); end != BreakIterator.DONE; start = end, end = breakIterator.next()) {
         		tmp = toDecrypt.substring(start, end);
         		int valueOfChar = tmp.codePointAt(0); 
-        		int newValue = 0x20 + (valueOfChar-0x0400);
+        		int newValue = CLEAR_TEXT_UNICODE_START_VALUE + (valueOfChar-CRYPTED_TEXT_UNICODE_START_VALUE);
         		result += String.copyValueOf(Character.toChars(newValue));
         }
 		return new Result(ResultCode.ESuccess, result);
