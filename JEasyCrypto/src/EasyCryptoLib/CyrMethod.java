@@ -8,8 +8,8 @@ import EasyCryptoLib.EasyCryptoLib.ResultCode;
 
 class CyrMethod implements CryptoMethod {
 	
-	private static final int CLEAR_TEXT_UNICODE_START_VALUE = 0x20;
-	private static final int CRYPTED_TEXT_UNICODE_START_VALUE = 0x0400;
+	private static final int CLEAR_TEXT_UNICODE_START_VALUE = 0x0020; // Basic latin, Range: 0020— 007F
+	private static final int CRYPTED_TEXT_UNICODE_START_VALUE = 0x0400; // Cyrillic, Range: 0400— 04FF
 	
 	@Override
 	public Result encrypt(String toEncrypt) {
