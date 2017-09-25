@@ -1,10 +1,10 @@
-package EasyCryptoLib;
+package easycrypto;
 
 import java.text.BreakIterator;
 import java.util.Locale;
 
-import EasyCryptoLib.EasyCryptoLib.Result;
-import EasyCryptoLib.EasyCryptoLib.ResultCode;
+import easycrypto.EasyCryptoAPI.Result;
+import easycrypto.EasyCryptoAPI.ResultCode;
 
 class CyrMethod implements CryptoMethod {
 	

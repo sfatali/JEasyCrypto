@@ -1,6 +1,6 @@
-package EasyCryptoLib;
+package easycrypto;
 
-import EasyCryptoLib.EasyCryptoLib.Result;
+import easycrypto.EasyCryptoAPI.Result;
 
 interface CryptoMethod {
 	/**

@@ -1,4 +1,4 @@
-package EasyCryptoLib;
+package easycrypto;
 
 /**
 
@@ -19,7 +19,7 @@ Usage:
 @version 1.0.0
  */
 
-public class EasyCryptoLib {
+public class EasyCryptoAPI {
 
 	private static final String currentVersion = "1.0.0";
 

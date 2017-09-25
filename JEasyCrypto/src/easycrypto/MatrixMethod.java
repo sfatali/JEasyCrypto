@@ -1,7 +1,7 @@
-package EasyCryptoLib;
+package easycrypto;
 
-import EasyCryptoLib.EasyCryptoLib.Result;
-import EasyCryptoLib.EasyCryptoLib.ResultCode;
+import easycrypto.EasyCryptoAPI.Result;
+import easycrypto.EasyCryptoAPI.ResultCode;
 
 class MatrixMethod implements CryptoMethod {
 

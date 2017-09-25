@@ -5,11 +5,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.util.concurrent.ArrayBlockingQueue;
-
 import org.json.simple.JSONObject;
 
-import EasyCryptoLib.EasyCryptoLib;
 
 public class CryptoClient implements Runnable, ReaderObserver {
 

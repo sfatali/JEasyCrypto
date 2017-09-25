@@ -3,7 +3,9 @@ package EasyCryptoConsole;
 import java.io.Console;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
-import EasyCryptoLib.EasyCryptoLib;
+
+import easycrypto.EasyCryptoAPI;
+
 
 
 public class EasyCryptoConsole {
@@ -16,19 +18,19 @@ public class EasyCryptoConsole {
 			Console console = System.console();
 
 			console.printf("Welcome to CryptoClient!\n");
-			console.printf("Supported methods are: %s\n", EasyCryptoLib.methods());
+			console.printf("Supported methods are: %s\n", EasyCryptoAPI.methods());
 
 			while (true) {
 				String d = console.readLine("Do you wish to encrypt or decrypt (e or d)? > ");
 				String e = console.readLine("Please enter text to be encrypted > ");
 				String m = console.readLine("Please enter encryption method > ");
 
-				EasyCryptoLib.Result result;
+				EasyCryptoAPI.Result result;
 
 				if (d.equalsIgnoreCase("e")) {
-					result = EasyCryptoLib.encrypt(e, m);
+					result = EasyCryptoAPI.encrypt(e, m);
 				} else if (d.equalsIgnoreCase("d")) {
-					result = EasyCryptoLib.decrypt(e, m);
+					result = EasyCryptoAPI.decrypt(e, m);
 				} else {
 					return;
 				}

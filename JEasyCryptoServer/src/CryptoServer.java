@@ -9,7 +9,7 @@ import java.net.SocketException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
-import EasyCryptoLib.EasyCryptoLib;
+import easycrypto.EasyCryptoAPI;
 
 // https://code.google.com/archive/p/json-simple/
 // http://www.geeksforgeeks.org/parse-json-java/
@@ -53,29 +53,29 @@ public class CryptoServer implements Runnable {
 					id = ((Long) root.get("id")).longValue(); // id of the operation, for async operations.
 					operation = (String) root.get("operation"); // request/response
 					
-					EasyCryptoLib.Result result = null;
+					EasyCryptoAPI.Result result = null;
 					
 					if (operation.equalsIgnoreCase("encrypt")) {
 						String method = (String) root.get("method"); // encrypt/decrypt
 						String data = (String) root.get ("data"); // text to be handled
-						result = EasyCryptoLib.encrypt(data, method);
+						result = EasyCryptoAPI.encrypt(data, method);
 					} else if (operation.equalsIgnoreCase("decrypt")) {
 						String method = (String) root.get("method"); // encrypt/decrypt
 						String data = (String) root.get ("data"); // text to be handled
-						result = EasyCryptoLib.decrypt(data, method);
+						result = EasyCryptoAPI.decrypt(data, method);
 					} else if (operation.equalsIgnoreCase("capabilities")) {
-						String methods = EasyCryptoLib.methods();
-						result = new EasyCryptoLib.Result(EasyCryptoLib.ResultCode.ESuccess, methods);
+						String methods = EasyCryptoAPI.methods();
+						result = new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.ESuccess, methods);
 					} else {
-						result = new EasyCryptoLib.Result(EasyCryptoLib.ResultCode.ENotSupported, "Operation not supported");
+						result = new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.ENotSupported, "Operation not supported");
 					}
 					response = createResponse(operation, id, result);
 				} catch (IOException ioe) {
 					ioe.printStackTrace();
-					response = createResponse(operation, id, new EasyCryptoLib.Result(EasyCryptoLib.ResultCode.EError, ioe.getLocalizedMessage()));
+					response = createResponse(operation, id, new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.EError, ioe.getLocalizedMessage()));
 				} catch (ParseException e) {
 					e.printStackTrace();
-					response = createResponse(operation, id, new EasyCryptoLib.Result(EasyCryptoLib.ResultCode.EError, e.getLocalizedMessage()));
+					response = createResponse(operation, id, new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.EError, e.getLocalizedMessage()));
 				} finally {
 					if (null != response && null != sender) {
 						System.out.println("Sending response: " + response);
@@ -102,7 +102,7 @@ public class CryptoServer implements Runnable {
 		}
 	} // end run()
 	
-	private String createResponse(String op, long id, EasyCryptoLib.Result result) {
+	private String createResponse(String op, long id, EasyCryptoAPI.Result result) {
 		JSONObject toSend = new JSONObject();
 		toSend.put("id", id);
 		toSend.put("operation", op+"-response");
