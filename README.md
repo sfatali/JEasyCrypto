@@ -42,9 +42,9 @@ If you're interested in contributing, you're awesome! Isn't OSS great? Please re
 This project follows the convention of [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/), a branching model for product development, so all the Pull requests must use this model to be taken in consideration.
 
 ### Roadmap
-The management is done through a [project](./projects/2). There is the list of features and bugs on which we are working for the next release. The roadmap follows a Kanban-like methodology (backlog, development, revision, done). When you start working on an issue or feature, make sure you move the corresponding card on the project for the convenience of all the team.
+The management is done through a [project](https://github.com/a-rmz/JEasyCrypto/projects/2). There is the list of features and bugs on which we are working for the next release. The roadmap follows a Kanban-like methodology (backlog, development, revision, done). When you start working on an issue or feature, make sure you move the corresponding card on the project for the convenience of all the team.
 
-You can also check the [features and issues](./issues) alone on the main board.
+You can also check the [features and issues](https://github.com/a-rmz/JEasyCrypto/issues) alone on the main board.
 
 
 ## In case of panic: Who you gonna call?
