@@ -1,8 +1,11 @@
-# README #
+# JEasyCrypto
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
 
 JEasyCrypto is a library and a collection of related applications enabling encryption and decryption of text using different methdods
 
-
+![encryption everywhere](https://h50003.www5.hpe.com/digmedialib/prodimg/lowres/c04165573.png)
 ## What can I find here?
 
 * Repository includes four components: 
