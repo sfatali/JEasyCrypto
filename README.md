@@ -6,6 +6,8 @@
 JEasyCrypto is a library and a collection of related applications enabling encryption and decryption of text using different methdods
 
 ![encryption everywhere](https://h50003.www5.hpe.com/digmedialib/prodimg/lowres/c04165573.png)
+
+
 ## What can I find here?
 
 * Repository includes four components: 
@@ -30,7 +32,6 @@ You can also run the Client and Server on the same machine. When launching the c
  * Run `Server` in one console window, and the `Client` in another.
 * For testing the Lib without network, you can use the Console without the overhead of networking between the Client and Server.
 
-
 ### Dependencies
 - [JSON Simple](https://code.google.com/archive/p/json-simple/) - Server and Client to create/parse JSON.
 
@@ -40,6 +41,9 @@ You can also run the Client and Server on the same machine. When launching the c
 If you're interested in contributing, you're awesome! Isn't OSS great? Please read the [contribution guide](./CONTRIBUTING.md) for details on the process for submitting pull requests, it's not as hard as it sounds. :wink:
 
 This project follows the convention of [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/), a branching model for product development, so all the Pull requests must use this model to be taken in consideration.
+
+### Style guide
+The project code follows the [Google Java Style Guide](google.github.io/styleguide/javaguide.html). All the submited Pull requests have to follow this convention.
 
 ### Roadmap
 The management is done through a [project](https://github.com/a-rmz/JEasyCrypto/projects/2). There is the list of features and bugs on which we are working for the next release. The roadmap follows a Kanban-like methodology (backlog, development, revision, done). When you start working on an issue or feature, make sure you move the corresponding card on the project for the convenience of all the team.
