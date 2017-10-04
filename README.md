@@ -62,7 +62,8 @@ You can also check the [features and issues](https://github.com/a-rmz/JEasyCrypt
 * Ghostbusters :ghost:
 
 
-<a name="contrib-guide"></a># Contribution guide
+<a name="contrib-guide"></a>
+# Contribution guide
 
 Thanks for taking the time to reach this far! It's great to see that you're as interested in this project as I am. 😄 Here you'll find everything you need to know to contribute to this project. This project is made by people for people, so, by following this guidelines, you help your peer developers help you developing the new features you have in mind or fixing the bugs or issues you find. Of course, all the help is appreciated, from code to docs, even by recommending this project you're helping!
 
