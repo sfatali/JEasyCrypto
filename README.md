@@ -54,6 +54,8 @@ You can also check the [features and issues](https://github.com/a-rmz/JEasyCrypt
 
 ## In case of panic: Who you gonna call?
 
+[Join](https://slackin-frcifywvtd.now.sh/) our Slack community!
+
 * [Antti Juustila](mailto:antti.juustila@oulu.fi)
 * OSSD 2017 team
 * Ghostbusters :ghost:
