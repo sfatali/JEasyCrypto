@@ -1,5 +1,6 @@
 # JEasyCrypto
 
+[![Build Status](https://travis-ci.org/a-rmz/JEasyCrypto.svg?branch=feat%2Fbuild)](https://travis-ci.org/a-rmz/JEasyCrypto)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![first-timers-only](http://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](http://www.firsttimersonly.com/)
 [![Slack!](https://slackin-frcifywvtd.now.sh/badge.svg)](https://slackin-frcifywvtd.now.sh/)
