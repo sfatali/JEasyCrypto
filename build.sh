@@ -1,4 +1,11 @@
-sh ./JEasyCrypto/build.sh
-sh ./JEasyCryptoClient/build.sh
-sh ./JEasyCryptoConsole/build.sh
-sh ./JEasyCryptoServer/build.sh
+cd ./JEasyCrypto
+sh build.sh
+cd ..
+cd ./JEasyCryptoClient
+sh build.sh
+cd ..
+cd ./JEasyCryptoConsole
+sh build.sh
+cd ..
+cd ./JEasyCryptoServer
+sh build.sh
