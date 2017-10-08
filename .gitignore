@@ -14,3 +14,6 @@
 # Maven
 log/
 target/
+
+# Project specific
+EasyCryptoLib.jar
