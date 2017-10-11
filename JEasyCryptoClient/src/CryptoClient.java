@@ -136,7 +136,8 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		request.put("id", requestId++);
 		request.put("operation", "capabilities");
 		String data = request.toJSONString();
-		DatagramPacket packet = new DatagramPacket(data.getBytes(), data.length(), serverAddr, serverPort);
+		byte[] serializedData = data.getBytes();
+		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
 	}
 	
@@ -149,7 +150,8 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		request.put("method", method);
 		request.put("data", text);
 		String data = request.toJSONString();
-		DatagramPacket packet = new DatagramPacket(data.getBytes(), data.length(), serverAddr, serverPort);
+		byte[] serializedData = data.getBytes();
+		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
 	}
 	
@@ -162,7 +164,8 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		request.put("method", method);
 		request.put("data", text);
 		String data = request.toJSONString();
-		DatagramPacket packet = new DatagramPacket(data.getBytes(), data.length(), serverAddr, serverPort);
+		byte[] serializedData = data.getBytes();
+		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
 	}
 	
