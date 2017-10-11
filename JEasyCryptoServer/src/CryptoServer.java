@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -79,7 +80,8 @@ public class CryptoServer implements Runnable {
 				} finally {
 					if (null != response && null != sender) {
 						System.out.println("Sending response: " + response);
-						DatagramPacket sendPacket = new DatagramPacket(response.getBytes(), response.length());
+						byte[] serializedResponse = response.getBytes();
+						DatagramPacket sendPacket = new DatagramPacket(serializedResponse, serializedResponse.length);
 						sendPacket.setAddress(sender);
 						sendPacket.setPort(packet.getPort());
 						try {
