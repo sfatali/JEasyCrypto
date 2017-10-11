@@ -28,7 +28,7 @@ public class ResponseReader extends Thread {
 				System.out.println("Starting to receive responses...");
 				socket.receive(packet);
 				System.out.println("Response received.");
-				String receivedData = new String(packet.getData(), 0, packet.getLength(),StandardCharsets.UTF_16);
+				String receivedData = new String(packet.getData(), 0, packet.getLength(), StandardCharsets.UTF_16);
 				System.out.println("Received raw data: " + receivedData);
 				System.out.println("Parsing...");
 				JSONObject root = (JSONObject) new JSONParser().parse(receivedData);
