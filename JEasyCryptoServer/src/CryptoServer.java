@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -43,7 +44,7 @@ public class CryptoServer implements Runnable {
 					System.out.println("Start to receive packets...");
 					socket.receive(packet);
 					System.out.println("Packet received!");
-					String receivedData = new String(packet.getData(), 0, packet.getLength());
+					String receivedData = new String(packet.getData(), 0, packet.getLength(), StandardCharsets.UTF_16);
 					sender = packet.getAddress();
 					System.out.println("Sender is: " + sender.getHostAddress() + ":" + packet.getPort());
 					System.out.println("Received raw data: " + receivedData);
@@ -79,7 +80,8 @@ public class CryptoServer implements Runnable {
 				} finally {
 					if (null != response && null != sender) {
 						System.out.println("Sending response: " + response);
-						DatagramPacket sendPacket = new DatagramPacket(response.getBytes(), response.length());
+						byte[] serializedResponse = response.getBytes(StandardCharsets.UTF_16);
+						DatagramPacket sendPacket = new DatagramPacket(serializedResponse, serializedResponse.length);
 						sendPacket.setAddress(sender);
 						sendPacket.setPort(packet.getPort());
 						try {
