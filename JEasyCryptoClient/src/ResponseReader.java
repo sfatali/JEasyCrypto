@@ -12,10 +12,12 @@ public class ResponseReader extends Thread {
 	private DatagramSocket socket = null;
 	private ReaderObserver observer = null;
 	private byte[] incoming = null;
+	private boolean isStopped = false;
 	
 	public ResponseReader(DatagramSocket s, ReaderObserver o) {
 		socket = s;
 		observer = o;
+		isStopped = false;
 	}
 	
 	@Override
@@ -37,12 +39,15 @@ public class ResponseReader extends Thread {
 				
 			} catch (IOException | ParseException | InterruptedException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				if (!isStopped){
+					e.printStackTrace();
+				}
 			}
 		}
 	}
 	
 	public void stopReading() {
+		isStopped = true;
 		interrupt();
 	}
 
