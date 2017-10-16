@@ -76,6 +76,7 @@ public class CryptoServer implements Runnable {
 					response = createResponse(operation, id, new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.EError, ioe.getLocalizedMessage()));
 				} catch (ParseException e) {
 					e.printStackTrace();
+					id = -1;
 					response = createResponse(operation, id, new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.EError, e.getLocalizedMessage()));
 				} finally {
 					if (null != response && null != sender) {
