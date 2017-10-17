@@ -6,6 +6,11 @@ import easycrypto.EasyCryptoAPI.ResultCode;
 class MatrixMethod implements CryptoMethod {
 
 	@Override
+	public boolean requiresKey() {
+		return false;
+	}
+
+	@Override
 	public Result encrypt(final String toEncrypt) {
 		String toStoreTo = new String();
 		int matrixWidth = (int) Math.floor(Math.sqrt(toEncrypt.length()));
@@ -31,7 +36,7 @@ class MatrixMethod implements CryptoMethod {
 		}
 		return new Result(ResultCode.ESuccess, toStoreTo);
 	}
-
+	
 	@Override
 	public Result decrypt(final String toDecrypt) {
 		String toStoreTo = new String();
@@ -59,6 +64,18 @@ class MatrixMethod implements CryptoMethod {
 		return new Result(ResultCode.ESuccess, toStoreTo);
 	}
 
+	//empty methods for interface
+	
+	@Override
+	public Result encrypt(final String toEncrypt, final String key) {
+		return new Result(ResultCode.ESuccess, "");
+	}
+		
+	@Override
+	public Result decrypt(final String toDecrypt, final String key) {
+		return new Result(ResultCode.ESuccess, "");
+	}
+	
 	@Override
 	public String method() {
 		return "matrix";

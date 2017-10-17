@@ -28,9 +28,9 @@ public class EasyCryptoConsole {
 				EasyCryptoAPI.Result result;
 
 				if (d.equalsIgnoreCase("e")) {
-					result = EasyCryptoAPI.encrypt(e, m);
+					result = EasyCryptoAPI.encrypt(e, m, "");
 				} else if (d.equalsIgnoreCase("d")) {
-					result = EasyCryptoAPI.decrypt(e, m);
+					result = EasyCryptoAPI.decrypt(e, m, "");
 				} else {
 					return;
 				}
