@@ -136,6 +136,7 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		request.put("id", requestId++);
 		request.put("operation", "capabilities");
 		String data = request.toJSONString();
+                console.printf("Request for capability info: "+data+"\n\n");
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
@@ -150,6 +151,7 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		request.put("method", method);
 		request.put("data", text);
 		String data = request.toJSONString();
+                console.printf("Request for encryption: "+data+"\n\n");
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
@@ -164,6 +166,7 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		request.put("method", method);
 		request.put("data", text);
 		String data = request.toJSONString();
+                console.printf("Request for decryption: "+data+"\n\n");
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
