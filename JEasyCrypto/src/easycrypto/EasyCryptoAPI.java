@@ -67,7 +67,11 @@ public class EasyCryptoAPI {
 			} else if (method.equalsIgnoreCase("cyr")) {
 				CryptoMethod theImpl = new CyrMethod();
 				return theImpl.encrypt(toEncrypt);
+			} else if (method.equalsIgnoreCase("rot13")){
+				CryptoMethod theImpl = new Rot13Method();
+				return theImpl.encrypt(toEncrypt);
 			}
+
 		} catch (Exception e) {
 			return new Result(ResultCode.EError, e.getMessage());
 		}
@@ -91,6 +95,9 @@ public class EasyCryptoAPI {
 				return theImpl.decrypt(toDecrypt);
 			} else if (method.equalsIgnoreCase("cyr")) {
 				CryptoMethod theImpl = new CyrMethod();
+				return theImpl.decrypt(toDecrypt);
+			}else if (method.equalsIgnoreCase("rot13")){
+				CryptoMethod theImpl = new Rot13Method();
 				return theImpl.decrypt(toDecrypt);
 			}
 		} catch (Exception e) {
@@ -121,6 +128,8 @@ public class EasyCryptoAPI {
 			method = new MatrixMethod();
 			methods += method.method();
 			method = new CyrMethod();
+			methods += "," + method.method();
+			method = new Rot13Method();
 			methods += "," + method.method();
 		} catch (Exception e) {
 			// ....
