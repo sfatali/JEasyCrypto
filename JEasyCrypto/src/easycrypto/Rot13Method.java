@@ -4,7 +4,11 @@ import easycrypto.EasyCryptoAPI.Result;
 import easycrypto.EasyCryptoAPI.ResultCode;
 
 class Rot13Method implements CryptoMethod {
+  @Override
+  public boolean requiresKey() {
 
+    return false;
+  }
   @Override
   public Result encrypt(final String toEncrypt){
     String res="";
