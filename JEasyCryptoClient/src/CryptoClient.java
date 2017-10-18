@@ -68,7 +68,7 @@ public class CryptoClient implements Runnable, ReaderObserver {
 					break;
 				}
 				}
-			} while (QUIT_MENU != choice);
+			} while (choice != QUIT_MENU );
 			
 		} catch (SocketException e) {
 			e.printStackTrace();
