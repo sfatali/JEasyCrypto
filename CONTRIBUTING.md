@@ -19,11 +19,11 @@ Now, the fun part! (Based on [Node JS](github.com/nodejs/node/blob/master/CONTRI
 
 ### Step 1: Fork
 
-Fork the project [on GitHub](https://github.com/a-rmz/sbotify) and clone your fork in your local.
+Fork the project [on GitHub](https://github.com/a-rmz/JEasyCrypto) and clone your fork in your local.
 
 ```text
 $ git clone git@github.com:username/JEasyCrypto.git
-$ cd sbotify
+$ cd JEasyCrypto
 $ git remote add upstream https://github.com/a-rmz/JEasyCrypto.git
 ```
 
