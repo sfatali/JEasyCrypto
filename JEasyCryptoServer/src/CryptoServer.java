@@ -78,7 +78,7 @@ public class CryptoServer implements Runnable {
 					e.printStackTrace();
 					response = createResponse(operation, id, new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.EError, e.getLocalizedMessage()));
 				} finally {
-					if (null != response && null != sender) {
+					if (response != null && sender != null) {
 						System.out.println("Sending response: " + response);
 						byte[] serializedResponse = response.getBytes(StandardCharsets.UTF_16);
 						DatagramPacket sendPacket = new DatagramPacket(serializedResponse, serializedResponse.length);
