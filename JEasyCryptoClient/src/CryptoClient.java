@@ -24,7 +24,12 @@ public class CryptoClient implements Runnable, ReaderObserver {
 	int requestId = 0;
 	
 	private Console console = System.console();
-		
+
+	/**
+	 *Main client loop
+	 *Asks CryptoServer address from user
+	 *Shows menu to user and performs chosen action
+	 */
 	@Override
 	public void run() {
 		// Prepare variables.
@@ -83,6 +88,9 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		}
 	}
 
+	/**
+	 *Asks server address from the user
+	 */
 	private InetAddress queryServerAddress() {
 		console.printf("Welcome to CryptoClient!\n");
 		console.printf("Enter CryptoServer address in the form \"123.123.123.123\" or hostname\n");
@@ -97,11 +105,17 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		return addr;
 	}
 
+	/**
+	 *Starts client
+	 */
 	public static void main(String[] args) {
 		new CryptoClient().run();
 	}
 
-
+	/**
+	 *Shows text based menu to user
+	 *@return Action chosen by user
+	 */
 	private int selectMenuItem() {
 		int choice = -1;
 		do {
@@ -123,6 +137,9 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		return choice;
 	}
 
+	/**
+	 *Wraps reading input reading from console
+	 */
 	private String enterText(String prompt, boolean required) {
 		String s = "";
 		do {
@@ -130,7 +147,10 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		} while (s.length() == 0 && required);
 		return s;
 	}
-	
+
+	/**
+	 *Requests information for supported methods from the server
+	 */
 	private void handleCapabilityRequest() throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
@@ -140,7 +160,10 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
 	}
-	
+
+	/**
+	 *Sends encryption request to the server
+	 */
 	private void handleEncryptRequest() throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
@@ -154,7 +177,10 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
 	}
-	
+
+	/**
+	 *Sends decryption request to the server
+	 */
 	private void handleDecryptRequest() throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
@@ -168,11 +194,17 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
 	}
-	
+
+	/**
+	 *Quits client
+	 */
 	private void handleQuitRequest() {
 		reader.stopReading();
 	}
 
+	/**
+	 *Prints response information
+	 */
 	@Override
 	public void handleResponse(JSONObject response) throws InterruptedException {
 		System.out.println("Got response from reader...");
