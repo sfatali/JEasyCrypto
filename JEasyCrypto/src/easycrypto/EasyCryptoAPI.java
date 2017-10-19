@@ -56,22 +56,33 @@ public class EasyCryptoAPI {
     @param m The method of encryption.
     @returns Returns success code of the encryption. See Result enum for details.
 	 */
-	public static Result encrypt(final String toEncrypt, final String method) {
+	public static Result encrypt(final String toEncrypt, final String method, final String key) {
 		try {
 			if (method.equalsIgnoreCase("reverse")) {
 				CryptoMethod theImpl = new ReverseMethod();
+				if (theImpl.requiresKey() && key.isEmpty()) {
+					return new Result(ResultCode.EError, "Error: encryption key is empty!");
+				}
 				return theImpl.encrypt(toEncrypt);
 			} else if (method.equalsIgnoreCase("matrix")) {
 				CryptoMethod theImpl = new MatrixMethod();
+				if (theImpl.requiresKey() && key.isEmpty()) {
+					return new Result(ResultCode.EError, "Error: encryption key is empty!");
+				}
 				return theImpl.encrypt(toEncrypt);
 			} else if (method.equalsIgnoreCase("cyr")) {
 				CryptoMethod theImpl = new CyrMethod();
+				if (theImpl.requiresKey() && key.isEmpty()) {
+					return new Result(ResultCode.EError, "Error: encryption key is empty!");
+				}
 				return theImpl.encrypt(toEncrypt);
 			} else if (method.equalsIgnoreCase("rot13")){
 				CryptoMethod theImpl = new Rot13Method();
+				if (theImpl.requiresKey() && key.isEmpty()) {
+					return new Result(ResultCode.EError, "Error: encryption key is empty!");
+				}
 				return theImpl.encrypt(toEncrypt);
 			}
-
 		} catch (Exception e) {
 			return new Result(ResultCode.EError, e.getMessage());
 		}
@@ -85,16 +96,25 @@ public class EasyCryptoAPI {
     @param m The method of decryption.
     @returns Returns success code of the decryption. See Result enum for details.
 	 */
-	public static Result decrypt(final String toDecrypt, final String method) {
+	public static Result decrypt(final String toDecrypt, final String method, final String key) {
 		try {
 			if (method.equalsIgnoreCase("reverse")) {
 				CryptoMethod theImpl = new ReverseMethod();
+				if (theImpl.requiresKey() && key.isEmpty()) {
+					return new Result(ResultCode.EError, "Error: encryption key is empty!");
+				}
 				return theImpl.decrypt(toDecrypt);
 			} else if (method.equalsIgnoreCase("matrix")) {
 				CryptoMethod theImpl = new MatrixMethod();
+				if (theImpl.requiresKey() && key.isEmpty()) {
+					return new Result(ResultCode.EError, "Error: encryption key is empty!");
+				}
 				return theImpl.decrypt(toDecrypt);
 			} else if (method.equalsIgnoreCase("cyr")) {
 				CryptoMethod theImpl = new CyrMethod();
+				if (theImpl.requiresKey() && key.isEmpty()) {
+					return new Result(ResultCode.EError, "Error: encryption key is empty!");
+				}
 				return theImpl.decrypt(toDecrypt);
 			}else if (method.equalsIgnoreCase("rot13")){
 				CryptoMethod theImpl = new Rot13Method();

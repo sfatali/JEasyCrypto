@@ -1,6 +1,8 @@
 import java.io.Console;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -20,7 +22,7 @@ public class CryptoClient implements Runnable, ReaderObserver {
 	private DatagramSocket socket = null;
 	private InetAddress serverAddr = null;
 	private int serverPort = 10000;
-	
+
 	int requestId = 0;
 	
 	private Console console = System.console();
@@ -30,14 +32,13 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		// Prepare variables.
 		try {
 			socket = new DatagramSocket(10001);
-			
+
 			serverAddr = queryServerAddress();
 			if (serverAddr == null) {
 				console.printf("Server address not given / invalid!\n");
 				console.printf("Quitting CryptoClient!\n");
 				return;
 			}
-			
 			reader = new ResponseReader(socket, this);
 			reader.start();
 
@@ -146,9 +147,13 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		request.put("id", requestId++);
 		request.put("operation", "encrypt");
 		String method = enterText("Give encryption method", true);
+		String key = enterText("Give encryption key", false);
 		String text = enterText("Give text to encrypt", false);
 		request.put("method", method);
+		request.put("key", key);
 		request.put("data", text);
+
+		
 		String data = request.toJSONString();
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
@@ -160,9 +165,13 @@ public class CryptoClient implements Runnable, ReaderObserver {
 		request.put("id", requestId++);
 		request.put("operation", "decrypt");
 		String method = enterText("Give decryption method", true);
+		String key = enterText("Give decryption key", false);
 		String text = enterText("Give text to decrypt", false);
 		request.put("method", method);
+		request.put("key", key);
 		request.put("data", text);
+
+
 		String data = request.toJSONString();
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
@@ -172,6 +181,8 @@ public class CryptoClient implements Runnable, ReaderObserver {
 	private void handleQuitRequest() {
 		reader.stopReading();
 	}
+	
+
 
 	@Override
 	public void handleResponse(JSONObject response) throws InterruptedException {
