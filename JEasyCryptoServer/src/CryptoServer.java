@@ -67,7 +67,6 @@ public class CryptoServer implements Runnable {
 						String data = (String) root.get ("data"); // text to be handled
 						String key = (String) root.get ("key"); // text to be handled
 						result = EasyCryptoAPI.decrypt(data, method, key);
-						//result = EasyCryptoAPI.decrypt(data, method, "");
 
 					} else if (operation.equalsIgnoreCase("capabilities")) {
 						String methods = EasyCryptoAPI.methods();
