@@ -16,7 +16,7 @@ public class ConsoleLauncher implements Runnable, ClientObserver {
 	private static final int QUIT_MENU = 4;
 	
 	private Console console = System.console();
-    	private CryptoClient client = null;
+    private CryptoClient client = null;
 
 	public static void main(String[] args) {
 		new ConsoleLauncher().run();
@@ -33,8 +33,9 @@ public class ConsoleLauncher implements Runnable, ClientObserver {
 				return;
 			}
             
-            this.client = new CryptoClient(serverAddr, this);
-
+            this.client = new CryptoClient(serverAddr);
+			this.client.setObserver(this);
+			
 			int choice;
 			do {
 				// Display menu.
