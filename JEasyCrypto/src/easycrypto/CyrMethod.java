@@ -15,7 +15,8 @@ class CyrMethod implements CryptoMethod {
 	public boolean requiresKey() {
 		return false;
 	}
-		@Override
+	
+	@Override
 	public Result encrypt(String toEncrypt) {
 		String result = new String();
 
