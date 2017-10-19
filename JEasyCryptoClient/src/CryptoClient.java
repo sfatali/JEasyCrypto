@@ -32,7 +32,7 @@ public class CryptoClient implements Runnable, ReaderObserver {
 			socket = new DatagramSocket(10001);
 			
 			serverAddr = queryServerAddress();
-			if (null == serverAddr) {
+			if (serverAddr == null) {
 				console.printf("Server address not given / invalid!\n");
 				console.printf("Quitting CryptoClient!\n");
 				return;
