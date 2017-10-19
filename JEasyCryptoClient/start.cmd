@@ -1,2 +1,2 @@
-java -cp ..\json-simple-1.1.1.jar;bin;. ConsoleLauncher
+java -cp ..\json-simple-1.1.1.jar;bin;. cli.ConsoleLauncher
 
