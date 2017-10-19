@@ -4,7 +4,6 @@ import java.nio.charset.StandardCharsets;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.SocketException;
 import java.net.UnknownHostException;
 import org.json.simple.JSONObject;
 import java.io.IOException;
@@ -19,51 +18,48 @@ public class CryptoClient implements ReaderObserver {
 	
 	private ClientObserver observer = null;
 	
-	public CryptoClient(InetAddress serverAddress, ClientObserver observer) throws SocketException {
-		this.observer = observer;
+	public CryptoClient(InetAddress serverAddress) throws IOException {
 		this.serverAddr = serverAddress;
 		this.socket = new DatagramSocket(10001);
 		this.reader = new ResponseReader(socket, this);
 		reader.start();
 	}
 	
-	public void sendCapabilityRequest() throws SocketException, IOException {
+	public void setObserver(ClientObserver observer) {
+		this.observer = observer;
+	}
+	
+	public void sendCapabilityRequest() throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
 		request.put("operation", "capabilities");
-
 		String data = request.toJSONString();
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
-
 		socket.send(packet);
 	}
 	
-	public void sendEncryptRequest(String method, String text) throws SocketException, IOException {
+	public void sendEncryptRequest(String method, String text) throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
 		request.put("operation", "encrypt");
 		request.put("method", method);
 		request.put("data", text);
-
 		String data = request.toJSONString();
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
-
 		socket.send(packet);
 	}
 	
-	public void sendDecryptRequest(String method, String text) throws SocketException, IOException {
+	public void sendDecryptRequest(String method, String text) throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
 		request.put("operation", "decrypt");
 		request.put("method", method);
 		request.put("data", text);
-
 		String data = request.toJSONString();
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
-		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
-		
+		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);	
 		socket.send(packet);
 	}
 	
