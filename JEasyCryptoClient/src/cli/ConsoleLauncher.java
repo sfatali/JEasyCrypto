@@ -1,8 +1,12 @@
+package cli;
+
 import java.io.Console;
 import java.net.InetAddress;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+
+import core.*;
 
 public class ConsoleLauncher implements Runnable, ClientObserver {
 

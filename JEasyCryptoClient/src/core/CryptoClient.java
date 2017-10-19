@@ -1,3 +1,5 @@
+package core;
+
 import java.nio.charset.StandardCharsets;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
