@@ -1,3 +1,5 @@
+package core;
+
 import org.json.simple.JSONObject;
 
 public interface ReaderObserver {
