@@ -4,11 +4,12 @@
 <?import javafx.geometry.*?>
 
 <VBox prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml" fillWidth="true">
-    <HBox style="-fx-background-color: #336699;" spacing="10">
+    <HBox style="-fx-background-color: #336699;" spacing="10" alignment="center">
         <padding>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0"/>
         </padding>
 
+        <Label text="Method:" style="-fx-font-weight: bold; -fx-text-fill: #cdcfd3; -fx-font-size: 12pt;"/>
         <TextField fx:id="methodTextField" prefColumnCount="10"/>
         <Button fx:id="encodeButton" text="Encrypt" onAction="#handleEncryptAction"/>
         <Button fx:id="decodeButton" text="Decrypt" onAction="#handleDecryptAction"/>
