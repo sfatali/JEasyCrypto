@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-if [ ! -d "./JEasyCrypto/bin/easycrypto/" ]; then mkdir -p JEasyCrypto/bin/easycrypto/ ; fi
-if [ ! -d "./JEasyCryptoClient/bin/" ]; then mkdir -p JEasyCryptoClient/bin/ ; fi
-if [ ! -d "./JEasyCryptoConsole/bin/EasyCryptoConsole/" ]; then mkdir -p JEasyCryptoConsole/bin/EasyCryptoConsole/ ; fi
-if [ ! -d "./JEasyCryptoServer/bin/" ]; then mkdir -p JEasyCryptoServer/bin/ ; fi
-
 sh clear.sh
 echo ""
 echo ""
