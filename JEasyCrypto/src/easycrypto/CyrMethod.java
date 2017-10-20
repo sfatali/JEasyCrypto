@@ -51,22 +51,22 @@ class CyrMethod implements CryptoMethod {
         }
 		return new Result(ResultCode.ESuccess, result);
 	}
-	
-	//empty methods for interface
-	
-		@Override
-		public Result encrypt(final String toEncrypt, final String key) {
-			return new Result(ResultCode.ESuccess, "");
-		}
-			
-		@Override
-		public Result decrypt(final String toDecrypt, final String key) {
-			return new Result(ResultCode.ESuccess, "");
-		}
 
 	@Override
 	public String method() {
 		return "cyr";
+	}
+	
+	//empty methods for interface
+	
+	@Override
+	public Result encrypt(final String toEncrypt, final String key) {
+		return new Result(ResultCode.EError, "Error: Wrong method accessed!");
+	}
+			
+	@Override
+	public Result decrypt(final String toDecrypt, final String key) {
+		return new Result(ResultCode.EError, "Error: Wrong method accessed!");
 	}
 
 }

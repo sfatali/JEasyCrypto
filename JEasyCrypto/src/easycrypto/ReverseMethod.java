@@ -29,14 +29,14 @@ class ReverseMethod implements CryptoMethod {
 
 	//empty methods for interface
 	
-		@Override
-		public Result encrypt(final String toEncrypt, final String key) {
-			return new Result(ResultCode.ESuccess, "");
-		}
+	@Override
+	public Result encrypt(final String toEncrypt, final String key) {
+		return new Result(ResultCode.EError, "Error: Wrong method accessed!");
+	}
 			
-		@Override
-		public Result decrypt(final String toDecrypt, final String key) {
-			return new Result(ResultCode.ESuccess, "");
-		}
+	@Override
+	public Result decrypt(final String toDecrypt, final String key) {
+		return new Result(ResultCode.EError, "Error: Wrong method accessed!");
+	}
 
 }

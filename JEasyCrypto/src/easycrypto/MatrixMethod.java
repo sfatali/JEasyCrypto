@@ -64,21 +64,21 @@ class MatrixMethod implements CryptoMethod {
 		return new Result(ResultCode.ESuccess, toStoreTo);
 	}
 
-	//empty methods for interface
-	
-	@Override
-	public Result encrypt(final String toEncrypt, final String key) {
-		return new Result(ResultCode.ESuccess, "");
-	}
-		
-	@Override
-	public Result decrypt(final String toDecrypt, final String key) {
-		return new Result(ResultCode.ESuccess, "");
-	}
-	
 	@Override
 	public String method() {
 		return "matrix";
 	}
-
+	
+	//empty methods for interface
+	
+	@Override
+	public Result encrypt(final String toEncrypt, final String key) {
+		return new Result(ResultCode.EError, "Error: Wrong method accessed!");
+	}
+		
+	@Override
+	public Result decrypt(final String toDecrypt, final String key) {
+		return new Result(ResultCode.EError, "Error: Wrong method accessed!");
+	}
+	
 }
