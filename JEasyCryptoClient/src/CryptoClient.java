@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 public class CryptoClient implements Runnable, ReaderObserver {
 
@@ -179,7 +180,6 @@ public class CryptoClient implements Runnable, ReaderObserver {
 	@Override
 	public void handleResponse(JSONObject response) throws InterruptedException {
 		System.out.println("Got response from reader...");
-
 		System.out.printf("Request ID: %d\n", response.get("id"));
 		System.out.printf("Operation: %s\n", response.get("operation"));
 		System.out.printf("Result: %d\n", response.get("result"));
