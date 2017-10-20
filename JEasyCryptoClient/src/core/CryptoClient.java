@@ -68,7 +68,7 @@ public class CryptoClient implements ReaderObserver {
 	/**
 	 *Sends decryption request to the server
 	 */
-	public void sendDecryptRequest(String method, String text) throws IOException {
+	public String sendDecryptRequest(String method, String text) throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
 		request.put("operation", "decrypt");
