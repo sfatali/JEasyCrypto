@@ -29,7 +29,6 @@ public class AppLauncher extends Application implements SceneManager {
         try {
             this.primaryStage = primaryStage;
             primaryStage.setTitle("JEasyCrypto");
-            primaryStage.setResizable(false);
             StartSceneController controller = new StartSceneController(START_SCENE_ID, this);
             Scene scene = loadScene(controller, START_SCENE_PATH);
             primaryStage.setScene(scene);
