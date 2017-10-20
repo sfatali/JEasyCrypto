@@ -34,31 +34,35 @@ public class CryptoClient implements ReaderObserver {
 		this.observer = observer;
 	}
 	
-	public void sendCapabilityRequest() throws IOException {
+	public String sendCapabilityRequest() throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
 		request.put("operation", "capabilities");
 		String data = request.toJSONString();
-		console.printf("Request for capability info: " + data + "\n\n");
+		
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
+
+		return data;
 	}
 
 	/**
 	 *Sends encryption request to the server
 	 */
-	public void sendEncryptRequest(String method, String text) throws IOException {
+	public String sendEncryptRequest(String method, String text) throws IOException {
 		JSONObject request = new JSONObject();
 		request.put("id", requestId++);
 		request.put("operation", "encrypt");
 		request.put("method", method);
 		request.put("data", text);
 		String data = request.toJSONString();
-		console.printf("Request for encryption: " + data + "\n\n");
+
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);
 		socket.send(packet);
+
+		return data;
 	}
 	
 	/**
@@ -71,10 +75,12 @@ public class CryptoClient implements ReaderObserver {
 		request.put("method", method);
 		request.put("data", text);
 		String data = request.toJSONString();
-		console.printf("Request for decryption: " + data + "\n\n");
+
 		byte[] serializedData = data.getBytes(StandardCharsets.UTF_16);
 		DatagramPacket packet = new DatagramPacket(serializedData, serializedData.length, serverAddr, serverPort);	
 		socket.send(packet);
+
+		return data;
 	}
 	
 	/**

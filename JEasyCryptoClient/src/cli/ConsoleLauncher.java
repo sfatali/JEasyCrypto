@@ -119,21 +119,24 @@ public class ConsoleLauncher implements Runnable, ClientObserver {
 	}
 	
 	private void handleCapabilityRequest() throws IOException {
-		client.sendCapabilityRequest();
+		String data = client.sendCapabilityRequest();
+		console.printf("Request for capability info: " + data + "\n\n");
 	}
 	
 	private void handleEncryptRequest() throws IOException {
 		String method = enterText("Give encryption method", true);
         String text = enterText("Give text to encrypt", false);
         
-        client.sendEncryptRequest(method, text);
+		String data = client.sendEncryptRequest(method, text);
+		console.printf("Request for encryption: " + data + "\n\n");
 	}
 	
 	private void handleDecryptRequest() throws IOException {
 		String method = enterText("Give decryption method", true);
         String text = enterText("Give text to decrypt", false);
         
-        client.sendDecryptRequest(method, text);
+		String data = client.sendDecryptRequest(method, text);
+		console.printf("Request for decryption: " + data + "\n\n");
 	}
 	
 	private void handleQuitRequest() {
