@@ -1,2 +1,1 @@
-java -cp ../json-simple-1.1.1.jar:bin:. CryptoClient
-
+java -cp ../json-simple-1.1.1.jar:bin:. cli/ConsoleLauncher

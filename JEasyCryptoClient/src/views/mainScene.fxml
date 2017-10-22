@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml" fillWidth="true">
+    <HBox style="-fx-background-color: #336699;" spacing="10" alignment="center">
+        <padding>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="5.0"/>
+        </padding>
+
+        <Label text="Method:" style="-fx-font-weight: bold; -fx-text-fill: #cdcfd3; -fx-font-size: 12pt;"/>
+        <TextField fx:id="methodTextField" prefColumnCount="10"/>
+        <Button fx:id="encodeButton" text="Encrypt" onAction="#handleEncryptAction"/>
+        <Button fx:id="decodeButton" text="Decrypt" onAction="#handleDecryptAction"/>
+        <Pane HBox.hgrow="ALWAYS" />
+        <Button fx:id="helpButton" text="Help" onAction="#handleHelpAction"/>
+    </HBox>
+
+    <GridPane hgap="5" vgap="10">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </padding>
+
+        <Label text="Input:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold"/>
+        <TextArea fx:id="inputTextArea"
+                  GridPane.columnIndex="1" 
+                  GridPane.rowIndex="0" 
+                  prefRowCount="9" 
+                  prefColumnCount="40" 
+                  text="The input message is ..."/>
+
+        <Label text="Output:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold"/>
+        <TextArea fx:id="outputTextArea"
+                  GridPane.columnIndex="1" 
+                  GridPane.rowIndex="1" 
+                  prefRowCount="9" 
+                  prefColumnCount="40"
+                  editable="false"/>
+    </GridPane>
+</VBox>

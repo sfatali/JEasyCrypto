@@ -3,14 +3,14 @@ set -e
 
 echo "Removing previous build files"
 
-rm -f -- JEasyCrypto/bin/easycrypto/*
+rm -rf -- JEasyCrypto/bin
 echo "JEasyCrypto lib clean"
 
-rm -f -- JEasyCryptoClient/bin/*
+rm -rf -- JEasyCryptoClient/bin
 echo "JEasyCryptoClient clean"
 
-rm -f -- JEasyCryptoConsole/bin/EasyCryptoConsole/*
+rm -rf -- JEasyCryptoConsole/bin
 echo "JEasyCryptoConsole clean"
 
-rm -f -- JEasyCryptoServer/bin/*
+rm -rf -- JEasyCryptoServer/bin
 echo "JEasyCryptoServer clean"

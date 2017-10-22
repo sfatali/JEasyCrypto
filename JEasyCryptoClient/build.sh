@@ -1,4 +1,8 @@
 #!/bin/bash
 set -e
 
-javac src/*.java -classpath "../json-simple-1.1.1.jar:." -d bin
+mkdir -p bin
+find -name "*.java" > sources.txt
+javac @sources.txt -classpath "../json-simple-1.1.1.jar:." -d bin
+rm sources.txt
+cp -r ./src/views ./bin
