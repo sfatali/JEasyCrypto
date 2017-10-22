@@ -22,18 +22,26 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
         </padding>
 
-        <Label text="Input:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold"/>
+        <Label text="Key:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold"/>
+        <TextArea fx:id="keyTextArea"
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="0"
+                  prefRowCount="1"
+                  prefColumnCount="40"
+                  text="The key is ..."/>
+
+        <Label text="Input:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold"/>
         <TextArea fx:id="inputTextArea"
-                  GridPane.columnIndex="1" 
-                  GridPane.rowIndex="0" 
-                  prefRowCount="9" 
-                  prefColumnCount="40" 
+                  GridPane.columnIndex="1"
+                  GridPane.rowIndex="1"
+                  prefRowCount="9"
+                  prefColumnCount="40"
                   text="The input message is ..."/>
 
-        <Label text="Output:" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold"/>
+        <Label text="Output:" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold"/>
         <TextArea fx:id="outputTextArea"
                   GridPane.columnIndex="1" 
-                  GridPane.rowIndex="1" 
+                  GridPane.rowIndex="2"
                   prefRowCount="9" 
                   prefColumnCount="40"
                   editable="false"/>
