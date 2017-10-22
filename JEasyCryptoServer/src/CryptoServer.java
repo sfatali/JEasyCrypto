@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.SocketAddress;
 import java.net.SocketException;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
@@ -65,8 +66,14 @@ public class CryptoServer implements Runnable {
 						String data = (String) root.get ("data"); // text to be handled
 						result = EasyCryptoAPI.decrypt(data, method);
 					} else if (operation.equalsIgnoreCase("capabilities")) {
-						String methods = EasyCryptoAPI.methods();
-						result = new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.ESuccess, methods);
+						JSONArray methodArray = new JSONArray();
+						// Split string with , and loop through
+						String[] method = EasyCryptoAPI.methods().split(",");
+						for(String m : method) {
+							methodArray.add(m);	
+						}
+						// Stringify the JSONArray to conform to JSON
+						result = new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.ESuccess, methodArray.toJSONString());
 					} else {
 						result = new EasyCryptoAPI.Result(EasyCryptoAPI.ResultCode.ENotSupported, "Operation not supported");
 					}
