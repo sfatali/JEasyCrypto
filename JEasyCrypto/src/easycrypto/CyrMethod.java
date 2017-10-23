@@ -10,6 +10,11 @@ class CyrMethod implements CryptoMethod {
 	
 	private static final int CLEAR_TEXT_UNICODE_START_VALUE = 0x0020; // Basic latin, Range: 0020— 007F
 	private static final int CRYPTED_TEXT_UNICODE_START_VALUE = 0x0400; // Cyrillic, Range: 0400— 04FF
+
+	@Override
+	public boolean requiresKey() {
+		return false;
+	}
 	
 	@Override
 	public Result encrypt(String toEncrypt) {
@@ -50,6 +55,18 @@ class CyrMethod implements CryptoMethod {
 	@Override
 	public String method() {
 		return "cyr";
+	}
+	
+	//empty methods for interface
+	
+	@Override
+	public Result encrypt(final String toEncrypt, final String key) {
+		return new Result(ResultCode.EError, "Error: Wrong method accessed!");
+	}
+			
+	@Override
+	public Result decrypt(final String toDecrypt, final String key) {
+		return new Result(ResultCode.EError, "Error: Wrong method accessed!");
 	}
 
 }

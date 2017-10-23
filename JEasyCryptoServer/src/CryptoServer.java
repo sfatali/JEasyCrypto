@@ -60,11 +60,15 @@ public class CryptoServer implements Runnable {
 					if (operation.equalsIgnoreCase("encrypt")) {
 						String method = (String) root.get("method"); // encrypt/decrypt
 						String data = (String) root.get ("data"); // text to be handled
-						result = EasyCryptoAPI.encrypt(data, method);
+						String key = (String) root.get ("key"); // text to be handled
+						result = EasyCryptoAPI.encrypt(data, method, key);
+
 					} else if (operation.equalsIgnoreCase("decrypt")) {
 						String method = (String) root.get("method"); // encrypt/decrypt
 						String data = (String) root.get ("data"); // text to be handled
-						result = EasyCryptoAPI.decrypt(data, method);
+						String key = (String) root.get ("key"); // text to be handled
+						result = EasyCryptoAPI.decrypt(data, method, key);
+
 					} else if (operation.equalsIgnoreCase("capabilities")) {
 						JSONArray methodArray = new JSONArray();
 						// Split string with , and loop through
